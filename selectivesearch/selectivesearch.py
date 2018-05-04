@@ -25,6 +25,7 @@ def _generate_segments(im_orig, scale, sigma, min_size):
     im_mask = skimage.segmentation.felzenszwalb(
         skimage.util.img_as_float(im_orig), scale=scale, sigma=sigma,
         min_size=min_size)
+        #  this method offered each pixels a labels marking its segmentation in the picture
 
     # merge mask channel to the image as a 4th channel
     im_orig = numpy.append(
@@ -39,6 +40,7 @@ def _sim_colour(r1, r2):
         calculate the sum of histogram intersection of colour
     """
     return sum([min(a, b) for a, b in zip(r1["hist_c"], r2["hist_c"])])
+    # each r is a diction
 
 
 def _sim_texture(r1, r2):
